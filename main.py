@@ -229,7 +229,7 @@ class GreenhouseSafetySystem(ctk.CTk):
                         dist = np.linalg.norm(np.array(t_center) - np.array(self.tracked_tools[tool_key]['pos']))
                         if dist > 30:
                             self.tracked_tools[tool_key] = {'start': now, 'pos': t_center, 'alerted': False}
-                        elif now - self.tracked_tools[tool_key]['start'] > 5 and not self.tracked_tools[tool_key]['alerted']:
+                        elif now - self.tracked_tools[tool_key]['start'] > 20 and not self.tracked_tools[tool_key]['alerted']:
                             self.play_voice(f"Be careful of the {t_label} on the path")
                             self.add_log(f"Hazard: {t_label} stationary on path.")
                             self.tracked_tools[tool_key]['alerted'] = True
